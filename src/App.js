@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h2>Let's get started!</h2>
-      <Expenses expenses={expenses} />
+      <Expenses items={expenses} />
     </div>
   );
 }
