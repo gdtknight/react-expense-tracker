@@ -1,17 +1,34 @@
-import ExpenseItem from './componenets/ExpenseItem';
+/*
+* 옛날 버전 import 방식
+* import React from 'react';
+* 모든 파일에 import문 추가 
+*/
+import Expenses from './components/Expenses/Expenses';
 
-function App() {
+
+const App = () => {
+
   const expenses = [
     { id: 'e1', title: 'Car Insurance', amount: 394.67, date: new Date(2021, 2, 12) },
     { id: 'e2', title: 'AirPlane Insurance', amount: 10094.67, date: new Date(2031, 2, 12) },
     { id: 'e3', title: 'Boat Insurance', amount: 9394.67, date: new Date(2030, 2, 12) }
   ];
+
+  /*
+   JSX 를 사용하지 않고 직접 구현하는 경우
+
+   return React.createElement(
+     'div',
+     {},
+     React.createElement('h2', {}, "Let's get started!"),
+     React.createElement(Expenses, { items: expenses },),
+   );
+  */
+
   return (
     <div className="App">
       <h2>Let's get started!</h2>
-      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} />
-      <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date} />
-      <ExpenseItem title={expenses[2].title} amount={expenses[2].amount} date={expenses[2].date} />
+      <Expenses items={expenses} />
     </div>
   );
 }
