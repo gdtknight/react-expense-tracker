@@ -2,10 +2,9 @@ import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 
 const Expenses = (props) => {
-  let id = 1;
   const expenseItems = props.items.map((item) =>
     <ExpenseItem
-      key={id++}
+      key={item.id}
       date={item.date}
       title={item.title}
       amount={item.amount}
