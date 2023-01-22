@@ -24,16 +24,10 @@ const App = () => {
       ...addedExpense,
     };
 
-    console.log('In App.js');
-    console.log(newExpense);
-
-    console.log(expenseItems);
-
     const updatedExpenses = [
       ...expenseItems,
       newExpense
     ];
-    console.log(updatedExpenses);
 
     setExpenseItems(updatedExpenses);
   };
