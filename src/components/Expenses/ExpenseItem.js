@@ -17,6 +17,7 @@ const ExpenseItem = (props) => {
   */
 
   const [title, setTitle] = useState(props.title);
+
   /*
   * 상위 컴포넌트인 Expenses 에서 각각의 ExpenseItem을 생성할 때마다
   * useState는 각각 독립적으로 생성되고 관리되므로
@@ -33,15 +34,17 @@ const ExpenseItem = (props) => {
   };
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      < div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div >
-      {/* 모든 'on' props 는 함수를 실행해야 함. */}
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        < div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div >
+        {/* 모든 'on' props 는 함수를 실행해야 함. */}
+        <button onClick={clickHandler}>Change Title</button>
+      </Card>
+    </li>
   );
 }
 
