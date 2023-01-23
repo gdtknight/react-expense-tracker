@@ -8,28 +8,26 @@ import React, { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
+const DUMMY_EXPENSES = [
+  { id: 'e1', title: 'Car Insurance', amount: 394.67, date: new Date(2021, 2, 12) },
+  { id: 'e2', title: 'AirPlane Insurance', amount: 10094.67, date: new Date(2031, 2, 12) },
+  { id: 'e3', title: 'Boat Insurance', amount: 9394.67, date: new Date(2030, 2, 12) }
+];
 
 const App = () => {
 
-  const expenses = [
-    { id: 'e1', title: 'Car Insurance', amount: 394.67, date: new Date(2021, 2, 12) },
-    { id: 'e2', title: 'AirPlane Insurance', amount: 10094.67, date: new Date(2031, 2, 12) },
-    { id: 'e3', title: 'Boat Insurance', amount: 9394.67, date: new Date(2030, 2, 12) }
-  ];
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const [expenseItems, setExpenseItems] = useState(expenses);
+  const addNewExpenseHandler = (newExpense) => {
 
-  const addExpenseHandler = (addedExpense) => {
-    const newExpense = {
-      ...addedExpense,
+    const updateExpenses = (prevExpenses) => {
+      return [
+        newExpense,
+        ...prevExpenses,
+      ];
     };
 
-    const updatedExpenses = [
-      ...expenseItems,
-      newExpense
-    ];
-
-    setExpenseItems(updatedExpenses);
+    setExpenses(updateExpenses(expenses));
   };
 
   /*
@@ -51,8 +49,8 @@ const App = () => {
   // 제일 하단의 ExpenseForm에 설정된 useState가 상위 컴포넌트로 단계적으로 연결
   return (
     <div className="App">
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenseItems} />
+      <NewExpense addNewExpense={addNewExpenseHandler} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }

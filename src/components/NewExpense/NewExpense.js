@@ -10,7 +10,7 @@ const NewExpense = (props) => {
       ...enteredExpenseData
     }
     // console.log(expenseData);
-    props.onAddNewExpense(expenseData);
+    props.addNewExpense(expenseData);
   };
 
   return (
