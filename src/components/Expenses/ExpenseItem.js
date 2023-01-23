@@ -22,14 +22,14 @@ const ExpenseItem = (props) => {
   * useState는 각각 독립적으로 생성되고 관리되므로
   * 특정 ExpenseItem의 title이 변경되어도 다른 ExpenseItem은 영향을 받지 않는다.
   */
-  console.log('ExpenseItem evaluated by React')
+  // console.log('ExpenseItem evaluated by React')
 
   const clickHandler = () => {
     setTitle('Updated!');
     // setTitle이 호출되는 순간 바로 업데이트 되는 것이 아니라
     // 업데이트가 예약됨.
     // 따라서 로그에 찍히는 값은 Updated! 로 변경되기 전 props.title 값 이 출력된다.
-    console.log(title);
+    // console.log(title);
   };
 
   return (
