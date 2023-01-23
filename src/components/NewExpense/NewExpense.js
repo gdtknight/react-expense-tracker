@@ -5,10 +5,20 @@ import './NewExpense.css';
 
 const NewExpense = (props) => {
 
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
 
-  const clickButtonHandler = (clicked) => {
-    setClicked(clicked);
+  // const clickButtonHandler = (clicked) => {
+  //   setClicked(clicked);
+  // };
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const startEditingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    setIsEditing(false);
   };
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
@@ -18,17 +28,19 @@ const NewExpense = (props) => {
     }
     // console.log(expenseData);
     props.addNewExpense(expenseData);
+    setIsEditing(false);
   };
 
-  let showForm = <button onClick={clickButtonHandler}>Add New Expense</button>;
+  // let showForm = <button onClick={clickButtonHandler}>Add New Expense</button>;
 
-  if (clicked) {
-    showForm = <ExpenseForm onClicked={clickButtonHandler} onSaveExpenseData={saveExpenseDataHandler} />;
-  };
+  // if (clicked) {
+  //   showForm = <ExpenseForm onClicked={clickButtonHandler} onSaveExpenseData={saveExpenseDataHandler} />;
+  // };
 
   return (
     <div className="new-expense">
-      {showForm}
+      {!isEditing && <button onClick={startEditingHandler}>Add New Expense</button>}
+      {isEditing && <ExpenseForm onCancel={stopEditingHandler} onSaveExpenseData={saveExpenseDataHandler} />}
     </div>
   );
 
