@@ -25,14 +25,19 @@ const Expenses = (props) => {
     />
   );
 
+  let expensesContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesContent = expenses;
+  }
 
   return (
     <div>
       <Card className="expenses">
-        <div className="filter">
-          <ExpensesFilter selectedYear={filteredYear} onChangeFilter={filterChangeHandler} />
-        </div>
-        {expenses}
+        <ExpensesFilter
+          selectedYear={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+        {expensesContent}
       </Card>
     </div>
   );
